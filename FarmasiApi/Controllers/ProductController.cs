@@ -1,4 +1,4 @@
-﻿using Application.DTOs;
+using Application.DTOs;
 using Application.Interfaces.Repositories;
 using Application.Interfaces.Services;
 using AutoMapper;
@@ -68,10 +68,11 @@ namespace FarmasiApi.Controllers
 
             if (!string.IsNullOrEmpty(userId.ToString()) && !string.IsNullOrEmpty(productId.ToString()))
             {
+                _cartService.UpdateCart(user.Result.Cart.Id, user.Result.Cart);
                 _userService.UpdateUser(userId, user.Result);
                 return Ok();
             }
-            
+         
             return BadRequest();
         }
 
